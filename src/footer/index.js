@@ -7,14 +7,15 @@ import Link from 'next/link';
 const useStyles = makeStyles({
   footer: {
     backgroundColor: "black",
-    height: "100px",
+    // height: "100px",
     width: "100%",
     textAlign: "center",
     color: "white",
-    paddingTop: "1.5rem",
-    position: "absolute",
+    paddingTop: "0.75rem",
+    position: "fixed",
     bottom: "0",
-    fontSize:"1rem"
+    fontSize:"0.75rem",
+    height:"4rem"
   },
 });
 
@@ -26,7 +27,7 @@ export default function FooterLayout() {
   return (
       <>
         <div className={classes.footer}>
-          <a className={styles.footerLayout} href="https://twitter.com/DevelopTopo">twitter</a>
+          <a className={styles.footerLayout} href="https://twitter.com/DevelopTopo" target="_blank">twitter</a>
           <p>2022 toposon</p>
         </div>
       </>

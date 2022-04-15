@@ -35,6 +35,8 @@ export const siteTitle = 'レトロゲーム図書館'
 export default function Layout() {
   const selector = useSelector(state=>state)
 
+  const classes = useStyles();
+
   const router = useRouter();
   const url = router.asPath.split(/[/?]/);
   const pathName = url[1];
@@ -138,12 +140,10 @@ const useStyles = makeStyles(() => ({
     width:"14rem",
     transform:"scale(0.6, 0.6)"
   },
-  // rootTextField:{ // ヘッダーのテキストボックスの全体の縮尺微調整用のクラス
-  //   margin:"0px",
-  //   padding:"0px",
-  //   width:"14rem",
-  //   transform:"scale(0.6, 0.6)"
-  // },
+  header: {
+    position: "fixed",
+    top: "0"
+  },
 }));
 
 function HeaderTextBox() {

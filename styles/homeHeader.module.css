@@ -12,6 +12,12 @@
   padding-left: 2rem;
   margin-bottom: 1rem;
 }
+
+.headerfixed {
+  position: fixed;
+  top: 0;
+}
+
 /*トップの下の水平線の設定*/
 .headHorizen {
   /* width: 70rem; */

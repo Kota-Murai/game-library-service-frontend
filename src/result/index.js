@@ -113,6 +113,8 @@ export default function Result(){
   const [dispItemCount, setDispItemCount] = useState(0)  // 検索結果総数
   const [dispItemList, setDispItemList] = useState(0)  // 検索結果一覧
 
+  const flag = false;
+
   // queryが変わった時だけ実行
   useEffect(()=>{
     setFamicomState((`${query.consoletype}`.includes("famicom") ? true : false))
@@ -121,14 +123,19 @@ export default function Result(){
     setReleaseMaxState((undefined !== query.maxyear) ? query.maxyear: -1)
     setPageNumber((undefined !== query.page) ? query.page: 0)
     setKeyWord((undefined !== query.keyword) ? query.keyword: "")
+    console.log("4");
+    // console.log("totta2");
   },[query])
 
   // stateが変わった時だけ実行
   useEffect(()=>{
     const f = async()=>{
       const result = await getSample(famicomState, n64State, releaseMinState, releaseMaxState, pageNumber, keyWord);
-      setDispItemCount(result.count)
-      setDispItemList(result.itemList)
+      console.log("result.count=" + result.count);
+      if ("undefined" != result.count) {
+        setDispItemCount(result.count)
+        setDispItemList(result.itemList)
+      }
     }
 
     f();

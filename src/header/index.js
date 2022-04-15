@@ -219,7 +219,7 @@ function BasicTabs() {
         >
           {/*Router.pushの第一引数はどのページからでも第一引数が自分のURLになるようにするため調整している  */}
           {/* 第二引数に入っているのが表示だけしているページのURL */}
-          <Tab value="console" onClick={()=>{Router.push(router.pathname, "/console", { shallow: true })}} className={classes.headertab} label="ゲーム機" />
+          <Tab value="console" onClick={()=>{Router.push(router.pathname, "/console", { shallow: true })}} className={classes.headertab} label="ゲーム機種" />
           <Tab value="series" onClick={()=>{Router.push(router.pathname, "/series", { shallow: true })}} className={classes.headertab} label="シリーズ" />
           <Tab value="genre" onClick={()=>{Router.push(router.pathname, "/genre", { shallow: true })}} className={classes.headertab} label="ジャンル" />
         </Tabs>

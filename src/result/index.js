@@ -342,9 +342,7 @@ function DammyCard() {
       <div className={classes.Root}>
         <div className={classes.cardRoot}>
           <CardMedia
-            // component="img"
             height="140"
-            image={`public/images/shiro.PNG`}
             alt="img"
             className={classes.imgTrim}
           />

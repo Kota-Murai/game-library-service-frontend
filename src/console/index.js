@@ -17,31 +17,6 @@ import {twitter} from 'react-icons-kit/icomoon/twitter'
 // ページ遷移
 import {useRouter} from 'next/router'
 
-// twitterCardの情報
-const twitterCard = {
-    title:"twitter",
-    url:"https://twitter.com/toposon_",
-    explanation:'ゲームのことや実況動画の告知を\nつぶやくアカウント'
-}
-// YouTubeCardの情報
-const YouTubeCard = {
-    title:"Youtube",
-    url:"https://www.youtube.com/channel/UCyPOkj8aAfENbXwe-PMnRCA",
-    explanation:'とぽそんのYouTubeチャンネル'
-}
-// YouTubeCardの情報
-const niconicoCard = {
-    title:"ニコニコ動画",
-    url:"https://www.nicovideo.jp/user/33307153",
-    explanation:'とぽそんのniconicoマイページ'
-}
-// githubCardの情報
-const githubCard = {
-    title:"Github",
-    url:"https://github.com/toposon",
-    explanation:'とぽそんのgithub\n(まだこのホームページだけです)'
-}
-
 // ここから
 const FamiryComputerCard = {
   title:"ファミリーコンピュータ",
@@ -70,14 +45,6 @@ export default function Console(){
                 </div>
                 <div className={styles.linkleft}>
                   <GameConsole data={N64Card} />
-                </div>
-              </div>
-              <div className={styles.rowflex + " " + styles.linktop}>
-                <div>
-                  <GameConsole data={niconicoCard} />
-                </div>
-                <div className={styles.linkleft}>
-                  <GameConsole data={githubCard} />
                 </div>
               </div>
             </div>
@@ -149,12 +116,6 @@ const GameConsole = (props) => {
           {title == "NINTENDO64" &&
             <N64Icon />
           }
-          {title == "ニコニコ動画" &&
-            <NiconicoIcon />   
-          }
-          {title == "Github" &&
-            <GithubIcon />   
-          }
       　</CardMedia>
         <CardContent className={classes.icontext} color="textSecondary">
         <Typography className={styles.aaa} variant="body2" color="textSecondary" component="p">
@@ -164,46 +125,6 @@ const GameConsole = (props) => {
       </CardActionArea>
     </Card>
   );
-}
-
-// YouTubeのアイコン
-const TwitterIcon = () => {
-    return(
-        <>
-            <div style={{ color: '#1DA1F2' }}>
-                <Icon size={200} icon={twitter} />
-             </div>
-        </>
-    )
-}
-
-// YouTubeのアイコン
-const YouTubeIcon = () => {
-    return(
-        <>
-            <div style={{ color: '#DA1725' }}>
-                <Icon size={200} icon={youtube} />
-             </div>
-        </>
-    )
-}
-
-// ニコニコのアイコン
-const NiconicoIcon = () => {
-    return(
-        <>
-             <img className={styles.niconicoiconlink} src="../images/niconico2.png" />
-        </>
-    )
-}
-
-// githubのアイコン
-const GithubIcon = () => {
-    return(
-        <>
-             <img className={styles.niconicoiconlink} src="../images/github.png" />
-        </>
-    )
 }
 
 // ファミコンのアイコン

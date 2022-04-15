@@ -1,0 +1,50 @@
+.container {
+  /* max-width: 70rem; 横幅は36rem 基本16pxが基準なので36remは576px? */
+  padding: 0 0rem; /*[上下][左右]のパディング*/
+  margin: 1rem auto 4rem; /*[上][左右][下]の順でmargin 左右はautoでmargin*/
+}
+/*トップのアイコンとタイトル部分の設定*/
+.headerTop {
+  /* margin-left: 15rem; */
+  display: flex;
+  flex-direction: row; /*縦(column)に連ねるか、横(row)に連ねるか*/
+  align-items: center;
+  padding-left: 2rem;
+  margin-bottom: 1rem;
+}
+/*トップの下の水平線の設定*/
+.headHorizen {
+  /* width: 70rem; */
+  height: 0.1rem;
+  margin: 0;
+  background-color: #dcdcdc;
+  border: none;
+}
+
+.headerImage {
+  width: 6rem;
+  height: 6rem;
+}
+
+.headerHomeImage {
+  width: 70px;
+  height: auto;
+}
+
+.headerHomeTitle {
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: -0.05rem;
+  margin: 1rem 0.5rem;
+  margin-right: 0rem;
+  /* padding: 1rem; */
+  /* font-family: "GN-キルゴUかなO";
+  src: url(../styles/font/GN-KillGothic-U-KanaO.ttf); */
+  font-family: "PixelMplus12 Regular";
+  src: url(../styles/font/PixelMplus12-Regular.ttf);
+}
+
+.headerImageborderCircle {
+  border-radius: 9999px;
+}

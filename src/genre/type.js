@@ -1,0 +1,1 @@
+// typescript導入時にactionsなどの型を静的に定義しておくファイル

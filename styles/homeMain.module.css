@@ -1,0 +1,176 @@
+/*mainの大枠クラス*/
+.container {
+  max-width: 70rem; /*横幅は36rem 基本16pxが基準なので36remは576px?*/
+  padding: 0 0rem; /*[上下][左右]のパディング*/
+  margin: 0.5rem auto 0rem; /*[上][左右][下]の順でmargin 左右はautoでmargin*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/*横並びflexの親クラス*/
+.rowflex {
+  display: flex;
+  flex-direction: row;
+}
+.adjustcenter {
+  align-items: center;
+}
+/*縦並びのflexの親クラス*/
+.columnflex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/*プロフィール画面下のグループの設定*/
+.bottomProfile {
+  margin-top: 0rem;
+}
+/*プロフィール画面右下のCardコンポーネントの設定*/
+.bottomRightProfile {
+  margin-left: 2rem;
+}
+
+/*とぽそん*/
+.kirugo {
+  font-family: "GN-キルゴUかなO";
+  src: url(../styles/font/GN-KillGothic-U-KanaO.ttf);
+  font-size: 3rem;
+  padding-bottom: 10px;
+}
+/*とぽそん*/
+.kirugo2 {
+  font-family: "GN-キルゴUかなO";
+  src: url(../styles/font/GN-KillGothic-U-KanaO.ttf);
+  font-size: 2.2rem;
+  margin-top: 4rem;
+}
+/*とぽそん*/
+.kirugo3 {
+  font-family: "GN-キルゴUかなO";
+  src: url(../styles/font/GN-KillGothic-U-KanaO.ttf);
+  font-size: 1.7rem;
+}
+
+.kirugo4 {
+  font-family: "GN-キルゴUかなO";
+  src: url(../styles/font/GN-KillGothic-U-KanaO.ttf);
+  font-size: 1.5rem;
+}
+
+.niconicoicon {
+  width: 40px;
+  height: auto;
+  color: white;
+  padding: 0;
+  margin: 0;
+}
+.niconicoiconlink {
+  width: 190px;
+  height: auto;
+  color: white;
+  padding: 0;
+  margin: 0;
+  margin-left: 10px;
+}
+
+.nonunderline {
+  text-decoration: none;
+}
+
+/*改行コードをjsxの変数の中でもうまく制御してくれるらしい*/
+.aaa {
+  white-space: pre-wrap;
+}
+
+.linkleft {
+  margin-left: 2rem;
+}
+
+.linktop {
+  margin-top: 2rem;
+}
+
+.footerLayout {
+  color: "white";
+  color: inherit;
+}
+
+/* 検索結果画面の詳細検索項目 */
+/* mainコンテンツ(その他コンテンツと異なり中央ぞろえにしない) */
+.containerSearch {
+  max-width: 60%; /*横幅は36rem 基本16pxが基準なので36remは576px?*/
+  padding: 0 0rem; /*[上下][左右]のパディング*/
+  margin: 0.5rem 1rem 0rem auto; /*[上][右][下][左]の順でmargin 左右はautoでmargin*/
+  display: flex;
+  flex-direction: column;
+}
+.containerSearchforSmall {
+  max-width: 60%; /*横幅は36rem 基本16pxが基準なので36remは576px?*/
+  padding: 0 0rem; /*[上下][左右]のパディング*/
+  margin: 0.5rem 1rem 0rem 5rem; /*[上][右][下][左]の順でmargin 左右はautoでmargin*/
+  display: flex;
+  flex-direction: column;
+}
+/* 左寄せ */
+.detailedSearch {
+  text-align: left;
+  display: flex;
+  flex-direction: column; /*縦(column)に連ねるか、横(row)に連ねるか*/
+  width: 17rem;
+}
+/* プルダウンボタン */
+.buttonPulldown {
+  width: 17rem;
+  height: 3rem;
+}
+
+/* ボタン下の下線 */
+.headHorizen {
+  /* width: 70rem; */
+  height: 0.01rem;
+  margin: 0;
+  background-color: black;
+  border: none;
+}
+
+/* 各種プルダウンボタン押下後、展開されるコンテンツの表示領域 */
+.searchContents {
+  width: 15rem;
+  margin-left: 1rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0.25rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+/*mainの大枠クラス(検索結果表示コンポーネント)*/
+.searchResultContainer {
+  max-width: 70rem; /*横幅は36rem 基本16pxが基準なので36remは576px?*/
+  padding: 0 0rem; /*[上下][左右]のパディング*/
+  margin: 0.5rem auto 0rem 1rem; /*[上][右][下][左]の順でmargin 左右はautoでmargin*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/*mainの大枠クラス(検索結果表示コンポーネント)*/
+.searchResultContainerforSmall {
+  max-width: 70rem; /*横幅は36rem 基本16pxが基準なので36remは576px?*/
+  padding: 0 0rem; /*[上下][左右]のパディング*/
+  margin: 0.5rem 0rem 0rem 1rem; /*[上][右][下][左]の順でmargin 左右はautoでmargin*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/*mainの大枠クラス(検索結果表示コンポーネント)*/
+.searchResultContainerforVerySmall {
+  max-width: 70rem; /*横幅は36rem 基本16pxが基準なので36remは576px?*/
+  padding: 0 0rem; /*[上下][左右]のパディング*/
+  margin: 0.5rem 5rem 0rem 1rem; /*[上][右][下][左]の順でmargin 左右はautoでmargin*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

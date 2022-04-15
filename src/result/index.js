@@ -103,17 +103,15 @@ export default function Result(){
   const [famicomState, setFamicomState] = useState((`${query.consoletype}`.includes("famicom") ? true : false))  // ファミコン
   const [n64State, setN64State] = useState((`${query.consoletype}`.includes("N64") ? true : false))      // N64
   // 発売年
-  const [releaseMinState, setReleaseMinState] = useState((`${query.minyear}` ? true : false))  // 発売年下限
-  const [releaseMaxState, setReleaseMaxState] = useState((`${query.maxyear}` ? true : false))  // 発売年上限
+  const [releaseMinState, setReleaseMinState] = useState((undefined !== query.minyear) ? query.minyear: -1)  // 発売年下限
+  const [releaseMaxState, setReleaseMaxState] = useState((undefined !== query.maxyear) ? query.maxyear: -1)  // 発売年上限
   // ページ番号
-  const [pageNumber, setPageNumber] = useState((`${query.page}` ? true : false))  // 発売年上限
+  const [pageNumber, setPageNumber] = useState((undefined !== query.page) ? query.page: 1)  // 発売年上限
   // キーワード
-  const [keyWord, setKeyWord] = useState((`${query.keyword}` ? true : false))  // 発売年上限
+  const [keyWord, setKeyWord] = useState((undefined !== query.keyword) ? query.keyword: "")  // 発売年上限
   // 表示情報
   const [dispItemCount, setDispItemCount] = useState(0)  // 検索結果総数
   const [dispItemList, setDispItemList] = useState(0)  // 検索結果一覧
-
-  const flag = false;
 
   // queryが変わった時だけ実行
   useEffect(()=>{
@@ -121,17 +119,14 @@ export default function Result(){
     setN64State((`${query.consoletype}`.includes("N64") ? true : false))
     setReleaseMinState((undefined !== query.minyear) ? query.minyear: -1)
     setReleaseMaxState((undefined !== query.maxyear) ? query.maxyear: -1)
-    setPageNumber((undefined !== query.page) ? query.page: 0)
+    setPageNumber((undefined !== query.page) ? query.page: 1)
     setKeyWord((undefined !== query.keyword) ? query.keyword: "")
-    console.log("4");
-    // console.log("totta2");
   },[query])
 
   // stateが変わった時だけ実行
   useEffect(()=>{
     const f = async()=>{
       const result = await getSample(famicomState, n64State, releaseMinState, releaseMaxState, pageNumber, keyWord);
-      console.log("result.count=" + result.count);
       if ("undefined" != result.count) {
         setDispItemCount(result.count)
         setDispItemList(result.itemList)

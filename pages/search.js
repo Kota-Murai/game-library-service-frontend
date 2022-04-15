@@ -21,8 +21,9 @@ export default function Home({allPostsData}) {
       <div className={styles.rowflex}>
         <Search/>
         <Result/>
+        <FooterLayout/>
       </div>
-      <FooterLayout/>
+      
     </>	    
   )
 }

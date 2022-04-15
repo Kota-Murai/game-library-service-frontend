@@ -25,10 +25,10 @@ export default function FooterLayout() {
 
   return (
       <>
-        <footer className={classes.footer}>
+        <div className={classes.footer}>
           <a className={styles.footerLayout} href="https://twitter.com/DevelopTopo">twitter</a>
           <p>2022 toposon</p>
-        </footer>
+        </div>
       </>
   )
 }

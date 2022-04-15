@@ -1,1 +1,1 @@
-This is a starter template for [Learn Next.js](https://nextjs.org/learn).
+ゲームを検索出来るサービス(フロントエンド)

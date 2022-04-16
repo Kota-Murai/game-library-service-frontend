@@ -10,10 +10,6 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardHeader } from '@mui/material';
-// Icon読み込み
-import { Icon } from 'react-icons-kit'
-import {youtube} from 'react-icons-kit/icomoon/youtube'
-import {twitter} from 'react-icons-kit/icomoon/twitter'
 // ページ遷移
 import {useRouter} from 'next/router'
 
@@ -47,6 +43,8 @@ export default function Console(){
                   <GameConsole data={N64Card} />
                 </div>
               </div>
+              <br/><br/>
+              <p className={classes.titleFont}>その他ゲーム機種も追加予定</p>
             </div>
           </main>
         </>
@@ -131,7 +129,7 @@ const GameConsole = (props) => {
 const FamicomIcon = () => {
   return(
       <>
-           <img className={styles.niconicoiconlink} src="../images/famicom.png" />
+        <img className={styles.niconicoiconlink} src="../images/famicom.png" />
       </>
   )
 }
@@ -140,7 +138,7 @@ const FamicomIcon = () => {
 const N64Icon = () => {
   return(
       <>
-           <img className={styles.niconicoiconlink} src="../images/N64.png" />
+        <img className={styles.niconicoiconlink} src="../images/N64.png" />
       </>
   )
 }

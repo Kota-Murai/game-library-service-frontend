@@ -412,12 +412,12 @@ function SearchSeries(){
   // for(let i = 1980; i < 2022; i++){
   //   list.push(<MenuItem value={i} key={Math.floor(Math.random()*1000000000000)}>{i}</MenuItem>);
   // }
-  list.push(<MenuItem value={"dammy"} key={Math.floor(Math.random()*1000000000000)}>{"dammy"}</MenuItem>);
+  list.push(<MenuItem value={""} key={Math.floor(Math.random()*1000000000000)}>{""}</MenuItem>);
 
   return (
     <div>
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">dammy</InputLabel>
+        <InputLabel id="demo-simple-select-label"></InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
@@ -462,12 +462,12 @@ function SearchGenre(){
   // for(let i = 1980; i < 2022; i++){
   //   list.push(<MenuItem value={i} key={Math.floor(Math.random()*1000000000000)}>{i}</MenuItem>);
   // }
-  list.push(<MenuItem value={"dammy"} key={Math.floor(Math.random()*1000000000000)}>{"dammy"}</MenuItem>);
+  list.push(<MenuItem value={""} key={Math.floor(Math.random()*1000000000000)}>{""}</MenuItem>);
 
   return (
     <div>
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">dammy</InputLabel>
+        <InputLabel id="demo-simple-select-label"></InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"

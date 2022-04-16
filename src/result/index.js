@@ -82,6 +82,11 @@ const useStyles = makeStyles((theme) => ({
   },
   typo:{
     width:"230px"
+  },
+  famicomimg:{  // 上下中央ぞろえ
+    display:"flex",
+    justifyContent:"center",
+    alignItems:"center",
   }
 }));
 
@@ -139,9 +144,11 @@ export default function Result(){
   // コンポーネント(画面の大きさにより表示方法を変更)
   return(
       <>
+      <main className={styles.searchResultContainerRoot}>
+      <text className={styles.resultcount}>{dispItemCount}件</text>
       {/* デスクトップ(大) */}
         {(true === lgmatches) &&
-          <main className={styles.searchResultContainer}>
+          <main className={styles.searchResultContainer} sx={{margin:0,padding:0}}>
             <div className={styles.rowflex + " " + styles.bottomProfile}>
               <BasicGridforDefault count={dispItemCount} list={dispItemList} page={pageNumber}/>
             </div>
@@ -166,6 +173,7 @@ export default function Result(){
               <BasicButtonGroup count={dispItemCount}/>
         </main>
         }
+        </main>
       </>
   )
 }
@@ -295,13 +303,28 @@ function MediaCard(props) {
     <Card sx={{maxHeight:170}} raised={true}>
       <div className={classes.Root}>
         <div className={classes.cardRoot}>
-          <CardMedia
-            component="img"
-            height="140"
-            src={imgurl}
-            alt="noimg"
-            className={classes.imgTrim}
-          />
+          {("N64" === consoletype) &&
+            <CardMedia
+              component="img"
+              height="140"
+              src={imgurl}
+              alt="noimg"
+              className={classes.imgTrim}
+            />
+          }
+          {("ファミリーコンピュータ" === consoletype) &&
+            <div className={classes.famicomimg}>
+              <CardMedia
+                component="img"
+                // height="140"
+                // width="20px"
+                marginTop="30px"
+                src={imgurl}
+                alt="noimg"
+                // className={classes.imgTrim}
+              />
+            </div>
+          }
           <div >
             <CardContent className={classes.cardText}>
               <Typography className={classes.typo} variant="body2" display="block" noWrap={true} gutterBottom={true} sx={{fontWeight:"bold"}}>

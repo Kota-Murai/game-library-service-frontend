@@ -31,33 +31,6 @@
   margin-left: 2rem;
 }
 
-/*とぽそん*/
-.kirugo {
-  font-family: "GN-キルゴUかなO";
-  src: url(../styles/font/GN-KillGothic-U-KanaO.ttf);
-  font-size: 3rem;
-  padding-bottom: 10px;
-}
-/*とぽそん*/
-.kirugo2 {
-  font-family: "GN-キルゴUかなO";
-  src: url(../styles/font/GN-KillGothic-U-KanaO.ttf);
-  font-size: 2.2rem;
-  margin-top: 4rem;
-}
-/*とぽそん*/
-.kirugo3 {
-  font-family: "GN-キルゴUかなO";
-  src: url(../styles/font/GN-KillGothic-U-KanaO.ttf);
-  font-size: 1.7rem;
-}
-
-.kirugo4 {
-  font-family: "GN-キルゴUかなO";
-  src: url(../styles/font/GN-KillGothic-U-KanaO.ttf);
-  font-size: 1.5rem;
-}
-
 .niconicoicon {
   width: 40px;
   height: auto;
@@ -146,10 +119,20 @@
 }
 
 /*mainの大枠クラス(検索結果表示コンポーネント)*/
+.searchResultContainerRoot {
+  max-width: 70rem; /*横幅は36rem 基本16pxが基準なので36remは576px?*/
+  padding: 0 0rem; /*[上下][左右]のパディング*/
+  margin: 0rem auto 5rem 0rem; /*[上][右][下][左]の順でmargin 左右はautoでmargin*/
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+/*mainの大枠クラス(検索結果表示コンポーネント)*/
 .searchResultContainer {
   max-width: 70rem; /*横幅は36rem 基本16pxが基準なので36remは576px?*/
   padding: 0 0rem; /*[上下][左右]のパディング*/
-  margin: 0.5rem auto 0rem 1rem; /*[上][右][下][左]の順でmargin 左右はautoでmargin*/
+  margin: 0rem auto 0rem 1rem; /*[上][右][下][左]の順でmargin 左右はautoでmargin*/
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -159,7 +142,7 @@
 .searchResultContainerforSmall {
   max-width: 70rem; /*横幅は36rem 基本16pxが基準なので36remは576px?*/
   padding: 0 0rem; /*[上下][左右]のパディング*/
-  margin: 0.5rem 0rem 0rem 1rem; /*[上][右][下][左]の順でmargin 左右はautoでmargin*/
+  margin: 0rem 0rem 0rem 1rem; /*[上][右][下][左]の順でmargin 左右はautoでmargin*/
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -169,8 +152,16 @@
 .searchResultContainerforVerySmall {
   max-width: 70rem; /*横幅は36rem 基本16pxが基準なので36remは576px?*/
   padding: 0 0rem; /*[上下][左右]のパディング*/
-  margin: 0.5rem 5rem 0rem 1rem; /*[上][右][下][左]の順でmargin 左右はautoでmargin*/
+  margin: 0rem 5rem 0rem 1rem; /*[上][右][下][左]の順でmargin 左右はautoでmargin*/
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+/* 検索件数表示個所 */
+.resultcount {
+  text-align: "left";
+  margin-left: 1rem;
+  font-size: 1rem;
+  padding-top: 8px;
 }

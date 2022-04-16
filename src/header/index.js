@@ -46,7 +46,7 @@ export default function Layout() {
       <Head>
         <link rel="icon" href="/gemeblog.ico" />
         <meta name="author" content="toposon"></meta>
-        <meta name="description" content="レトロゲームを検索できるサイトです。昔のゲームを探したり、Amazon、楽天へリンクからたどれます。" />
+        <meta name="description" content="レトロゲームを検索できるサイトです。昔のゲームを探すことが出来ます。欲しいゲームはAmazon、楽天のリンクからどうぞ" />
         <meta name="keywords" content="レトロ,ゲーム,検索,年代別,図書館,N64,ファミコン"></meta>
         <title>{siteTitle}</title>
       </Head>

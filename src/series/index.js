@@ -3,6 +3,8 @@ import styles from '../../styles/homeMain.module.css'
 import React from 'react';
 import { makeStyles } from '@mui/styles';
 
+// シリーズ検索ページコンテンツ
+// ※作成中
 export default function Series(){
   const classes = useStyles()
 
@@ -18,7 +20,7 @@ export default function Series(){
     )
 }
 
-// ファミコンのアイコン
+// 工事中のアイコン
 const KoujiChuIcon = () => {
   return(
       <>

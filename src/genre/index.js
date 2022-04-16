@@ -3,6 +3,9 @@ import styles from '../../styles/homeMain.module.css'
 import React from 'react';
 import { makeStyles } from '@mui/styles';
 
+
+// ジャンル検索ページコンテンツ
+// ※作成中
 export default function Genre(){
   const classes = useStyles()
 
@@ -11,14 +14,14 @@ export default function Genre(){
           <main className={styles.container}>
             <KoujiChuIcon />
             <br/>
-            <text className={classes.koujiFont}>シリーズ検索機能は作成中です。</text>
+            <text className={classes.koujiFont}>ジャンル検索機能は作成中です。</text>
             <text className={classes.koujiFont}>完成まで少々お待ちください。</text>
           </main>
         </>
     )
 }
 
-// ファミコンのアイコン
+// 工事中のアイコン
 const KoujiChuIcon = () => {
   return(
       <>

@@ -1,10 +1,7 @@
 import React from 'react';
 import Series from '../src/series/index'
 import Layout from '../src/header/index'
-import {useDispatch, useSelector} from "react-redux";
-import {gettabName} from '../src/header/selectors'
 import {useRouter} from 'next/router'
-import { getSortedPostsData } from '../lib/posts'
 import Genre from '../src/genre/index'
 import FooterLayout from '../src/footer/index'
 import Console from '../src/console/index'
@@ -33,10 +30,10 @@ export default function LinkTab({allPostsData}) {
 }
 
 export async function getStaticProps() {
-    const allPostsData = getSortedPostsData()
+    // const allPostsData = getSortedPostsData()
     return {
       props: {
-        allPostsData
+        // allPostsData
       }
     }
   }

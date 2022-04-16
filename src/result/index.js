@@ -119,6 +119,7 @@ export default function Result(){
   const [dispItemList, setDispItemList] = useState(0)  // 検索結果一覧
 
   // queryが変わった時だけ実行
+  // queryに応じて各種stateを更新する
   useEffect(()=>{
     setFamicomState((`${query.consoletype}`.includes("famicom") ? true : false))
     setN64State((`${query.consoletype}`.includes("N64") ? true : false))
@@ -129,6 +130,7 @@ export default function Result(){
   },[query])
 
   // stateが変わった時だけ実行
+  // 上記useEffectが走ったことをトリガーに実行される
   useEffect(()=>{
     const f = async()=>{
       const result = await getSample(famicomState, n64State, releaseMinState, releaseMaxState, pageNumber, keyWord);
@@ -141,7 +143,7 @@ export default function Result(){
     f();
   },[famicomState, n64State, releaseMinState, releaseMaxState, pageNumber, keyWord])
 
-  // コンポーネント(画面の大きさにより表示方法を変更)
+  // 画面の大きさにより表示方法を変更
   return(
       <>
       <main className={styles.searchResultContainerRoot}>
@@ -180,24 +182,22 @@ export default function Result(){
 
 // 大サイズの時の検索結果表示コンポーネント
 function BasicGridforDefault(props) {
-  // props.list
-
 
   // 表示コンテンツを一旦listへ格納
   let list = [];
   if ((props.count/9 > props.page)) { // 最後のページではない場合、9件分表示
     for (let i = 0; i < 9; i++) {
-      list.push(<Grid item xs={4} key={Math.floor(Math.random()*1000000000000)}><MediaCard item={props.list[i]} /></Grid>);
+      list.push(<Grid item xs={4} key={`BasicGridforDefault1${i}`}><MediaCard item={props.list[i]} /></Grid>);
     }
   }
   else {  // 最後のページの場合9件全ては表示出来ないため、それを考慮した処理にする。
     const dispItem = props.count - (9 * (props.page - 1));
     for (let i = 0; i < dispItem ; i++) {
-      list.push(<Grid item xs={4} key={Math.floor(Math.random()*1000000000000)}><MediaCard item={props.list[i]} /></Grid>);
+      list.push(<Grid item xs={4} key={`BasicGridforDefault2${i}`}><MediaCard item={props.list[i]} /></Grid>);
     }
   
     for (let i = 0; i < 9 - dispItem; i++) {
-      list.push(<Grid item xs={4} key={Math.floor(Math.random()*1000000000000)}><DammyCard /></Grid>);
+      list.push(<Grid item xs={4} key={`BasicGridforDefault3${i}`}><DammyCard /></Grid>);
     } 
   }
 
@@ -217,13 +217,13 @@ function BasicGridforSmall(props) {
   let list = [];
   if ((props.count/9 > props.page)) {
     for (let i = 0; i < 9; i++) {
-      list.push(<Grid item xs={6} key={Math.floor(Math.random()*1000000000000)}><MediaCard item={props.list[i]} /></Grid>);
+      list.push(<Grid item xs={6} key={`BasicGridforSmall1${i}`}><MediaCard item={props.list[i]} /></Grid>);
     }
   }
   else {
     const dispItem = props.count - (9 * (props.page - 1));
     for (let i = 0; i < dispItem ; i++) {
-      list.push(<Grid item xs={6} key={Math.floor(Math.random()*1000000000000)}><MediaCard item={props.list[i]} /></Grid>);
+      list.push(<Grid item xs={6} key={`BasicGridforSmall2${i}`}><MediaCard item={props.list[i]} /></Grid>);
     }
   }
 
@@ -243,13 +243,13 @@ function BasicGridforVerySmall(props) {
   let list = [];
   if ((props.count/9 > props.page)) {
     for (let i = 0; i < 9; i++) {
-      list.push(<Grid item xs={12} key={Math.floor(Math.random()*1000000000000)}><MediaCard item={props.list[i]} /></Grid>);
+      list.push(<Grid item xs={12} key={`BasicGridforVerySmall1${i}`}><MediaCard item={props.list[i]} /></Grid>);
     }
   }
   else {
     const dispItem = props.count - (9 * (props.page - 1));
     for (let i = 0; i < dispItem ; i++) {
-      list.push(<Grid item xs={12} key={Math.floor(Math.random()*1000000000000)}><MediaCard item={props.list[i]} /></Grid>);
+      list.push(<Grid item xs={12} key={`BasicGridforVerySmall2${i}`}><MediaCard item={props.list[i]} /></Grid>);
     }
   }
 
@@ -466,20 +466,20 @@ function BasicButtonGroup(props) {
   const list = [];
 
   if (9 >= props.count) {
-    list.push(<Button color="primary" className={classes.buttonHover} disabled sx={{backgroundColor:"#C0C0C0"}} key={Math.floor(Math.random()*1000000000000)}>{"<<"}</Button>)
-    list.push(<Button color="primary" className={classes.buttonHover} disabled sx={{backgroundColor:"#C0C0C0"}} key={Math.floor(Math.random()*1000000000000)}>{"<"}</Button>)
-    list.push(<Button color="primary" onClick={()=>{operatePageQuery("1")}} className={classes.buttonHover} disabled sx={{backgroundColor:"#C0C0C0"}} key={Math.floor(Math.random()*1000000000000)}>{"1"}</Button>)
-    list.push(<Button color="primary" className={classes.buttonHover} disabled sx={{backgroundColor:"#C0C0C0"}} key={Math.floor(Math.random()*1000000000000)}>{">"}</Button>)
-    list.push(<Button color="primary" className={classes.buttonHover} disabled sx={{backgroundColor:"#C0C0C0"}} key={Math.floor(Math.random()*1000000000000)}>{">>"}</Button>)
+    list.push(<Button color="primary" className={classes.buttonHover} disabled sx={{backgroundColor:"#C0C0C0"}} key={`BasicButtonGroup1`}>{"<<"}</Button>)
+    list.push(<Button color="primary" className={classes.buttonHover} disabled sx={{backgroundColor:"#C0C0C0"}} key={`BasicButtonGroup2`}>{"<"}</Button>)
+    list.push(<Button color="primary" onClick={()=>{operatePageQuery("1")}} className={classes.buttonHover} disabled sx={{backgroundColor:"#C0C0C0"}} key={`BasicButtonGroup3`}>{"1"}</Button>)
+    list.push(<Button color="primary" className={classes.buttonHover} disabled sx={{backgroundColor:"#C0C0C0"}} key={`BasicButtonGroup4`}>{">"}</Button>)
+    list.push(<Button color="primary" className={classes.buttonHover} disabled sx={{backgroundColor:"#C0C0C0"}} key={`BasicButtonGroup5`}>{">>"}</Button>)
   }
   else {
     if (1 != number) {
-      list.push(<Button color="primary" onClick={()=>{operatePageQuery("<<")}} className={classes.buttonHover} sx={{backgroundColor:"white"}} key={Math.floor(Math.random()*1000000000000)}>{"<<"}</Button>)
-      list.push(<Button color="primary" onClick={()=>{operatePageQuery("<")}} className={classes.buttonHover} sx={{backgroundColor:"white"}} key={Math.floor(Math.random()*1000000000000)}>{"<"}</Button>)
+      list.push(<Button color="primary" onClick={()=>{operatePageQuery("<<")}} className={classes.buttonHover} sx={{backgroundColor:"white"}} key={`BasicButtonGroup6`}>{"<<"}</Button>)
+      list.push(<Button color="primary" onClick={()=>{operatePageQuery("<")}} className={classes.buttonHover} sx={{backgroundColor:"white"}} key={`BasicButtonGroup7`}>{"<"}</Button>)
     }
     else {
-      list.push(<Button color="primary" onClick={()=>{operatePageQuery("<<")}} className={classes.buttonHover} disabled sx={{backgroundColor:"#C0C0C0"}} key={Math.floor(Math.random()*1000000000000)}>{"<<"}</Button>)
-      list.push(<Button color="primary" onClick={()=>{operatePageQuery("<")}} className={classes.buttonHover} disabled sx={{backgroundColor:"#C0C0C0"}} key={Math.floor(Math.random()*1000000000000)}>{"<"}</Button>)
+      list.push(<Button color="primary" onClick={()=>{operatePageQuery("<<")}} className={classes.buttonHover} disabled sx={{backgroundColor:"#C0C0C0"}} key={`BasicButtonGroup8`}>{"<<"}</Button>)
+      list.push(<Button color="primary" onClick={()=>{operatePageQuery("<")}} className={classes.buttonHover} disabled sx={{backgroundColor:"#C0C0C0"}} key={`BasicButtonGroup9`}>{"<"}</Button>)
     }
 
     // 最後のページ
@@ -502,10 +502,10 @@ function BasicButtonGroup(props) {
     }
     for (let i=startNumber; i < startNumber + 5; i++) {
       if (number == i) {
-        list.push(<Button color="primary" onClick={()=>{operatePageQuery(i)}} className={classes.buttonHover} disabled sx={{backgroundColor:"#C0C0C0"}} key={Math.floor(Math.random()*1000000000000)}>{i}</Button>)
+        list.push(<Button color="primary" onClick={()=>{operatePageQuery(i)}} className={classes.buttonHover} disabled sx={{backgroundColor:"#C0C0C0"}} key={`BasicButtonGroup10${i}`}>{i}</Button>)
       }
       else {
-        list.push(<Button color="primary" onClick={()=>{operatePageQuery(i)}} className={classes.buttonHover} sx={{backgroundColor:"white"}} key={Math.floor(Math.random()*1000000000000)}>{i}</Button>)
+        list.push(<Button color="primary" onClick={()=>{operatePageQuery(i)}} className={classes.buttonHover} sx={{backgroundColor:"white"}} key={`BasicButtonGroup11${i}`}>{i}</Button>)
       }
       if (i == lastPage) {
         break;
@@ -513,12 +513,12 @@ function BasicButtonGroup(props) {
     }
 
     if (lastPage == number) {
-      list.push(<Button color="primary" onClick={()=>{operatePageQuery(">")}} className={classes.buttonHover} disabled sx={{backgroundColor:"#C0C0C0"}} key={Math.floor(Math.random()*1000000000000)}>{">"}</Button>)
-      list.push(<Button color="primary" onClick={()=>{operatePageQuery(">>")}} className={classes.buttonHover} disabled sx={{backgroundColor:"#C0C0C0"}} key={Math.floor(Math.random()*1000000000000)}>{">>"}</Button>)
+      list.push(<Button color="primary" onClick={()=>{operatePageQuery(">")}} className={classes.buttonHover} disabled sx={{backgroundColor:"#C0C0C0"}} key={`BasicButtonGroup12`}>{">"}</Button>)
+      list.push(<Button color="primary" onClick={()=>{operatePageQuery(">>")}} className={classes.buttonHover} disabled sx={{backgroundColor:"#C0C0C0"}} key={`BasicButtonGroup13`}>{">>"}</Button>)
     }
     else {
-      list.push(<Button color="primary" onClick={()=>{operatePageQuery(">")}} className={classes.buttonHover} sx={{backgroundColor:"white"}} key={Math.floor(Math.random()*1000000000000)}>{">"}</Button>)
-      list.push(<Button color="primary" onClick={()=>{operatePageQuery(">>")}} className={classes.buttonHover} sx={{backgroundColor:"white"}} key={Math.floor(Math.random()*1000000000000)}>{">>"}</Button>)
+      list.push(<Button color="primary" onClick={()=>{operatePageQuery(">")}} className={classes.buttonHover} sx={{backgroundColor:"white"}} key={`BasicButtonGroup14`}>{">"}</Button>)
+      list.push(<Button color="primary" onClick={()=>{operatePageQuery(">>")}} className={classes.buttonHover} sx={{backgroundColor:"white"}} key={`BasicButtonGroup15`}>{">>"}</Button>)
     }
   }
 

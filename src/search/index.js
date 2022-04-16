@@ -20,14 +20,12 @@ import FormControl from '@mui/material/FormControl';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import {createTheme } from '@mui/material/styles';
 // Redux関連
-import {useDispatch, useSelector} from "react-redux"; // Redux関連メソッドインポート
-import {getConsoleState, getReleaseState, getSeriesState, getGenreState, getTitleState} from './selectors'          // セレクター
+import {useSelector} from "react-redux"; // Redux関連メソッドインポート
+// 各種詳細検索で選べる検索条件タブの開閉状態を取得
+import {getConsoleState, getReleaseState, getSeriesState, getGenreState, getTitleState} from './selectors'
 
 // queryの解析
 import queryString from 'query-string';
-
-// ゲーム機種別配列 ゲーム機種別が追加のたびにここに追加
-const consoleArray = [{display:"ファミコン", uri:"famicom"}, {display:"N64", uri:"N64"}];
 
 // cssの定義
 const useStyles = makeStyles({
@@ -64,11 +62,12 @@ const useStyles = makeStyles({
 
 // 検索条件指定領域のコンポーネント
 export default function Search(){
-
+ 
   const selector = useSelector(state=>state)
-
   const router = useRouter();
 
+  // 現在のパスを取得
+  // router.queryの場合、1回目の取得ではundefinedとなってしまうためこの対応としている。
   const query = queryString.parse(decodeURI((router.asPath.split(/\?/)[1])));
 
   // トップのプルダウンボタンの状態管理.
@@ -86,9 +85,11 @@ export default function Search(){
   const [releaseMinState, setReleaseMinState] = useState((`${query.minyear}` ? true : false))  // 発売年下限
   const [releaseMaxState, setReleaseMaxState] = useState((`${query.maxyear}` ? true : false))  // 発売年上限
 
+  // 子コンポーネントへ送るため、オブジェクトでひとまとめに
   const selectedConsoleListState = {famicomState:famicomState, n64State:n64State}
 
-  // queryが変わった時だけ実行
+
+  // queryが変わった時(検索条件が変わった時)だけ実行する処理
   useEffect(()=>{
     setFamicomState((`${query.consoletype}`.includes("famicom") ? true : false))
     setN64State((`${query.consoletype}`.includes("N64") ? true : false))
@@ -102,6 +103,8 @@ export default function Search(){
     }
   },[query]);
 
+  // レスポンシブ対応
+  // 表示形式を変更するブレークポイントを設定しておく
   const theme = createTheme({breakpoints: {values: {xs: 0,sm: 800,md: 1050,lg: 1350,xl: 1200}}});
   const matches = useMediaQuery(theme.breakpoints.up('md'));
 
@@ -111,6 +114,7 @@ export default function Search(){
         <main className={matches ? styles.containerSearch:styles.containerSearchforSmall}>
           <div className={styles.detailedSearch}>
             詳細検索
+            {/* 検索条件を追加するときはここのボタンタブの定義も合わせて追加する */}
             <hr className={`${styles.headHorizen}`}></hr>
             {/* ゲーム機 */}
             <PullDownButton nowstate={getConsoleState(selector)} onClick={()=>{setConsoleState(!consoleState)}} typeValue="ゲーム機　　　　　　　　　　　" />
@@ -176,9 +180,6 @@ function PullDownButton(props) {
 
 // ゲーム機の詳細検索コンポーネント
 function SearchConsole(props){
-  const classes = useStyles();
-
-  const selector = useSelector(state=>state)
 
   const router = useRouter();
   
@@ -278,7 +279,7 @@ function SearchReleaseMIN(props){
 
   let list = [];
   for(let i = 1980; i <= maxyear; i++){
-    list.push(<MenuItem onClick={()=>{minyearButtonClicked(i)}} value={i} key={Math.floor(Math.random()*1000000000000)}>{i}</MenuItem>);
+    list.push(<MenuItem onClick={()=>{minyearButtonClicked(i)}} value={i} key={`SearchReleaseMIN${i}`}>{i}</MenuItem>);
   }
 
   return (
@@ -360,7 +361,7 @@ function SearchReleaseMAX(props){
 
   let list = [];
   for(let i = minyear; i < 2022; i++){
-    list.push(<MenuItem onClick={()=>{maxyearButtonClicked(i)}} value={i} key={Math.floor(Math.random()*1000000000000)}>{i}</MenuItem>);
+    list.push(<MenuItem onClick={()=>{maxyearButtonClicked(i)}} value={i} key={`SearchReleaseMAX${i}`}>{i}</MenuItem>);
   }
 
   return (
@@ -398,6 +399,7 @@ function SearchReleaseMAX(props){
 }
 
 // シリーズの詳細検索コンポーネント(最大)
+// ※シリーズ検索機能が追加され次第こちらも対応
 function SearchSeries(){
   const classes = useStyles();
 
@@ -409,10 +411,7 @@ function SearchSeries(){
 
   let list = [];
 
-  // for(let i = 1980; i < 2022; i++){
-  //   list.push(<MenuItem value={i} key={Math.floor(Math.random()*1000000000000)}>{i}</MenuItem>);
-  // }
-  list.push(<MenuItem value={""} key={Math.floor(Math.random()*1000000000000)}>{""}</MenuItem>);
+  list.push(<MenuItem value={""} key={`SearchSeries`}>{""}</MenuItem>);
 
   return (
     <div>
@@ -448,6 +447,7 @@ function SearchSeries(){
 }
 
 // ジャンルの詳細検索コンポーネント(最大)
+// ※ジャンル検索機能が追加され次第こちらも対応
 function SearchGenre(){
   const classes = useStyles();
 
@@ -459,10 +459,7 @@ function SearchGenre(){
 
   let list = [];
 
-  // for(let i = 1980; i < 2022; i++){
-  //   list.push(<MenuItem value={i} key={Math.floor(Math.random()*1000000000000)}>{i}</MenuItem>);
-  // }
-  list.push(<MenuItem value={""} key={Math.floor(Math.random()*1000000000000)}>{""}</MenuItem>);
+  list.push(<MenuItem value={""} key={`SearchGenre`}>{""}</MenuItem>);
 
   return (
     <div>

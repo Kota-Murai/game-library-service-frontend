@@ -63,10 +63,8 @@ export default function Layout() {
               <Link href="/">
                 <h1 className={`${styles.headerHomeTitle}`}>{name}</h1>
               </Link>
-              {/* <form noValidate autoComplete="off"> */}
                 <HeaderTextBox>
                 </HeaderTextBox>
-              {/* </form> */}
             </div>
             <hr className={`${styles.headHorizen}`}></hr>
             {((pathName !== "search") &&
@@ -78,32 +76,7 @@ export default function Layout() {
   )
 }
 
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box sx={{ p: 4 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
-
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.number.isRequired,
-  value: PropTypes.number.isRequired,
-};
-
+// スタイル設定
 const useStyles = makeStyles(() => ({
   headertab: {
     flexGrow: 1,
@@ -137,6 +110,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
+// ヘッダーのタイトル検索ボックスコンポーネント
 function HeaderTextBox() {
   const classes = useStyles();
   const router = useRouter();
@@ -186,7 +160,7 @@ function HeaderTextBox() {
   );
 }
 
-// ホームヘッダーの
+// ホームヘッダーのタブ
 function BasicTabs() {
   // インスタンス生成
   const classes = useStyles();
@@ -208,11 +182,11 @@ function BasicTabs() {
           textColor="primary"
           centered
         >
-          {/*Router.pushの第一引数はどのページからでも第一引数が自分のURLになるようにするため調整している  */}
-          {/* 第二引数に入っているのが表示だけしているページのURL */}
-          <Tab value="console" onClick={()=>{Router.push(router.pathname, "/console", { shallow: true })}} className={classes.headertab} label="ゲーム機種" />
-          <Tab value="series" onClick={()=>{Router.push(router.pathname, "/series", { shallow: true })}} className={classes.headertab} label="シリーズ" />
-          <Tab value="genre" onClick={()=>{Router.push(router.pathname, "/genre", { shallow: true })}} className={classes.headertab} label="ジャンル" />
+          {/* 第一引数に共通のパスを指定することでページ遷移時のちらつきが発生しないようにしている。  */}
+          {/* 第二引数で指定したサブディレクトリの指定により、表示するURLとコンテンツを操作する。 */}
+          <Tab value="console" onClick={()=>{router.push(router.pathname, "/console", { shallow: true })}} className={classes.headertab} label="ゲーム機種" />
+          <Tab value="series" onClick={()=>{router.push(router.pathname, "/series", { shallow: true })}} className={classes.headertab} label="シリーズ" />
+          <Tab value="genre" onClick={()=>{router.push(router.pathname, "/genre", { shallow: true })}} className={classes.headertab} label="ジャンル" />
         </Tabs>
       </Paper>
     </div>

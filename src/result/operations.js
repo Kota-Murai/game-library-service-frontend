@@ -10,8 +10,8 @@ import axios from "axios"
 export async function getSample(famicomState, n64State, releaseMinState, releaseMaxState, pageNumber, keyWord){
     // wikiの情報を取得
     try {
-        // const res = await axios.post("http://localhost:8080", {
-        const res = await axios.post("https://t6pvbl5ngb.execute-api.ap-northeast-1.amazonaws.com/prod/getGameData", {
+        const res = await axios.post("http://localhost:8080", {
+        // const res = await axios.post("https://t6pvbl5ngb.execute-api.ap-northeast-1.amazonaws.com/prod/getGameData", {
             famicom:famicomState, 
             n64:n64State, 
             yearmin:releaseMinState, 

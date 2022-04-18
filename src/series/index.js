@@ -13,8 +13,8 @@ export default function Series(){
           <main className={styles.container}>
             <KoujiChuIcon />
             <br/>
-            <text className={classes.koujiFont}>シリーズ検索機能は作成中です。</text>
-            <text className={classes.koujiFont}>完成まで少々お待ちください。</text>
+            <div className={classes.koujiFont}>シリーズ検索機能は作成中です。</div>
+            <div className={classes.koujiFont}>完成まで少々お待ちください。</div>
           </main>
         </>
     )

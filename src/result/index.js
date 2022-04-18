@@ -147,7 +147,7 @@ export default function Result(){
   return(
       <>
       <main className={styles.searchResultContainerRoot}>
-      <text className={styles.resultcount}>{dispItemCount}件</text>
+      <div className={styles.resultcount}>{dispItemCount}件</div>
       {/* デスクトップ(大) */}
         {(true === lgmatches) &&
           <main className={styles.searchResultContainer} sx={{margin:0,padding:0}}>
@@ -318,7 +318,7 @@ function MediaCard(props) {
                 component="img"
                 // height="140"
                 // width="20px"
-                marginTop="30px"
+                // marginTop="30px"
                 src={imgurl}
                 alt="noimg"
                 // className={classes.imgTrim}
@@ -370,6 +370,7 @@ function DammyCard() {
             height="140"
             alt="img"
             className={classes.imgTrim}
+            src=""
           />
           <div >
           </div>

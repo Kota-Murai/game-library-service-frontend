@@ -154,7 +154,9 @@ export default function Result(){
             <div className={styles.rowflex + " " + styles.bottomProfile}>
               <BasicGridforDefault count={dispItemCount} list={dispItemList} page={pageNumber}/>
             </div>
-            <BasicButtonGroup count={dispItemCount}/>
+            {(0 !== dispItemCount) &&
+              <BasicButtonGroup count={dispItemCount}/>
+            }
           </main>
         }
         {/* デスクトップ(中) */}
@@ -163,7 +165,9 @@ export default function Result(){
             <div className={styles.rowflex + " " + styles.bottomProfile}>
               <BasicGridforSmall count={dispItemCount} list={dispItemList} page={pageNumber}/>
             </div>
-            <BasicButtonGroup count={dispItemCount}/>
+            {(0 !== dispItemCount) &&
+              <BasicButtonGroup count={dispItemCount}/>
+            }
           </main>  
         }
         {/* デスクトップ(小) */}
@@ -172,7 +176,9 @@ export default function Result(){
             <div className={styles.rowflex + " " + styles.bottomProfile}>
               <BasicGridforVerySmall count={dispItemCount} list={dispItemList} page={pageNumber}/>
             </div>
+            {(0 !== dispItemCount) &&
               <BasicButtonGroup count={dispItemCount}/>
+            }
         </main>
         }
         </main>

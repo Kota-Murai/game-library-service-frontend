@@ -270,7 +270,7 @@ function MediaCard(props) {
   // ひとまず即returnで応急処置
   // 画面がちらついてしまうのでどうにかしたい
   if (undefined == props.item) {
-    return;
+    return null;
   }
 
   let {consoletype, imgurl, maker, releaseyear, series, softtitle, genre}  = props.item;
